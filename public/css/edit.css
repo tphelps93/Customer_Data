@@ -1,0 +1,38 @@
+body {
+    background: radial-gradient(#F7F5E6, beige);
+}
+
+.btn {
+    background-color: #333A56;
+    border-radius: 2%;
+    color: #F7F5E6;
+    border: 1px solid #e8e8e8;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.btn:hover {
+    background-color: #52658F;
+    border: 1px solid #e8e8e8;
+}
+
+#submit {
+    background-color: #52658F;
+}
+
+#submit:hover {
+    background-color: rgb(106, 120, 150);
+}
+
+h1 {
+    color: #333A56;
+    font-family: 'Open Sans', sans-serif;
+}
+
+label {
+    font-size: 15px;
+}
+
+#create-form {
+    color: #f7f5e6;
+    font-family: 'Open Sans', sans-serif;
+}

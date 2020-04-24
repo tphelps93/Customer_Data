@@ -1,0 +1,49 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Customer Edit
+  link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' integrity='sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh' crossorigin='anonymous')
+  script(src='https://code.jquery.com/jquery-3.4.1.slim.min.js' integrity='sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n' crossorigin='anonymous')
+  script(src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js' integrity='sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo' crossorigin='anonymous')
+  script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js' integrity='sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6' crossorigin='anonymous')
+  link(rel='stylesheet' href='/public/css/edit.css')
+
+  main#create_wrapper
+    form#create-form(action="/postUpdateCustomer/" + customer._id, method="POST")(style="width: 500px; margin: 0 auto")
+      h1.text-center
+        | Edit Customer 
+        div
+          label(for='name') #[strong Name]
+          input#name.input.form-control(type='text' name='name' spellcheck='false' value=customer.name)
+        div
+          label #[strong Email]
+          input#email.input.form-control(type='email' name='email' spellcheck='false' pattern='^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$' value=customer.email)        
+        div
+          label #[strong Birth Date]
+          input#date.input.form-control(type='date' name='date' value=moment(customer.date).format('YYYY-MM-DD'))       
+        div
+          label #[strong Gender]
+          select#gender.input.form-control(for='gender' type='text' name='gender' value=customer.gender)
+            option(value='male') Male
+            option(value='female') Female          
+        div
+          label #[strong Weight:] pounds
+          input#weight.input.form-control(type='number' min='0' max='600' step='0.1' name='weight' value=customer.weight || '50.0')          
+        div
+          label #[strong Height:] feet
+          input#height.input.form-control(type='number' min='1.00' step='0.01' name='height' value=customer.height || '6.00')
+        div
+          label #[strong Bodyfat:] percentage
+          input#bodyFat.input.form-control(type='number' min='1.0' max='50.0' step='0.1' name='bodyFat' value=customer.bodyFat || '1.0')         
+        div
+          label #[strong Phone Number]
+          input#phoneNumber.input.form-control(type='tel' name='number' pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" title="Requested format: xxx-xxx-xxx" value=customer.number)        
+        div
+          label #[strong Additional Notes]
+          textarea#notes.input.form-control(name='notes' minlength='10')
+            | #{customer.notes}          
+        button#submit.btn.btn-primary Submit 
+
+        a(href="/")
+          button#cancel.btn.btn-secondary(type="button") Cancel
